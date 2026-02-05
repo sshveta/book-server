@@ -1,16 +1,28 @@
-- category: potential
+- category: mandatory
   customVariables: []
-  description: This is a description of rules. This is a template for new rulesets.
+  description: Dependency on JSF artifacts must be updated
   effort: 1
   labels:
-    - konveyor.io/include=always
-    - tag
+  - konveyor.io/source=eap6
+  - konveyor.io/source=eap7
+  - konveyor.io/source=eap
+  - konveyor.io/target=eap8+
+  - konveyor.io/target=eap
+  - eap8
   links:
-    - title: Test-002 Remote Exception
-      url: http://nufc.com
-  message: Test-002 Message markdown
-  ruleID: Test-001-00001
+  - title: Jakarta Faces 4.0 specification
+    url: https://jakarta.ee/specifications/faces/4.0/
+  - title: Jakarta Server Faces
+    url: https://access.redhat.com/articles/6980265#faces
+  message: |-
+    Dependency on JSF artifacts must be updated for EAP8 to Jakarta Faces 4.0.
+     Update dependency to `org.glassfish:jakarta.faces:4.0.0` or greater
+  ruleID: eap8-faces-00001
   when:
-    file:
-        filename: AdministracionEfectivo-jpa{*}.jar
-
+    or:
+    - java.dependency:
+        lowerbound: 0.0.0
+        nameregex: org\.jboss\.spec\.javax\.faces\..*
+    - java.dependency:
+        lowerbound: 0.0.0
+        nameregex: com\.sun\.faces\..*
