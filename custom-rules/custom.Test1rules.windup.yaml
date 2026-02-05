@@ -1,28 +1,25 @@
-- category: mandatory
+- category: optional
   customVariables: []
-  description: Dependency on JSF artifacts must be updated
+  description: ServletAuthentication CUSTOM RULE - ServletAuthentication
   effort: 1
   labels:
-  - konveyor.io/source=eap6
-  - konveyor.io/source=eap7
-  - konveyor.io/source=eap
-  - konveyor.io/target=eap8+
-  - konveyor.io/target=eap
-  - eap8
+    - konveyor.io/source=springboot
+    - konveyor.io/source=weblogic
+    - konveyor.io/target=eap7
+    - konveyor.io/target=eap8
+    - hibernate
+    - configuration
   links:
-  - title: Jakarta Faces 4.0 specification
-    url: https://jakarta.ee/specifications/faces/4.0/
-  - title: Jakarta Server Faces
-    url: https://access.redhat.com/articles/6980265#faces
-  message: |-
-    Dependency on JSF artifacts must be updated for EAP8 to Jakarta Faces 4.0.
-     Update dependency to `org.glassfish:jakarta.faces:4.0.0` or greater
-  ruleID: eap8-faces-00001
+    - title: This link should take you to the Konveyor main page
+      url: https://www.konveyor.io/
+    - title: This link should take you to the Konveyor organization GitHub page
+      url: https://github.com/konveyor
+  message:
+    This is a custom rule for testing that should trigger issues in imports
+    of ServletAuthentication
+  ruleID: basic-custom-rule
   when:
-    or:
-    - java.dependency:
-        lowerbound: 0.0.0
-        nameregex: org\.jboss\.spec\.javax\.faces\..*
-    - java.dependency:
-        lowerbound: 0.0.0
-        nameregex: com\.sun\.faces\..*
+    java.referenced:
+      location: IMPORT
+      pattern: weblogic.servlet.security.ServletAuthentication
+
