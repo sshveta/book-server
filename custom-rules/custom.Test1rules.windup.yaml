@@ -1,0 +1,16 @@
+- category: potential
+  customVariables: []
+  description: This is a description of rules. This is a template for new rulesets.
+  effort: 1
+  labels:
+    - konveyor.io/include=always
+    - tag
+  links:
+    - title: Test-002 Remote Exception
+      url: http://nufc.com
+  message: Test-002 Message markdown
+  ruleID: Test-001-00001
+  when:
+    file:
+        filename: AdministracionEfectivo-jpa{*}.jar
+
